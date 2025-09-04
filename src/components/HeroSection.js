@@ -38,10 +38,10 @@ const HeroSection = () => {
     return () => clearTimeout(timeout);
   }, [text, currentIndex, isDeleting, titles]);
 
-  const scrollToNext = () => {
-    const aboutSection = document.getElementById('about');
-    if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+      projectsSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
@@ -112,115 +112,143 @@ const HeroSection = () => {
         />
       ))}
 
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-        {/* Introduction */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mb-8"
-        >
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-4"
+      <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        {/* Two Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Text Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-left"
           >
-            Hello, I'm
-          </motion.p>
-          
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-5xl sm:text-7xl lg:text-8xl font-bold mb-6"
-          >
-            <span className="gradient-text">Abil P Raju</span>
-          </motion.h1>
-        </motion.div>
+            {/* Greeting */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="text-lg sm:text-xl text-blue-500 dark:text-blue-400 mb-4 font-medium"
+            >
+              Hello, I'm
+            </motion.p>
+            
+            {/* Name */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-800 dark:text-white mb-4"
+            >
+              Abil P Raju
+            </motion.h1>
 
-        {/* Animated Role */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
-          className="mb-8"
-        >
-          <div className="text-2xl sm:text-4xl lg:text-5xl font-semibold text-gray-800 dark:text-white mb-4">
-            I'm a{' '}
-            <span className="gradient-text inline-block min-w-0">
-              {text}
-              <motion.span
-                animate={{ opacity: [1, 0] }}
-                transition={{ duration: 0.8, repeat: Infinity }}
-                className="text-primary-500"
-              >
-                |
-              </motion.span>
-            </span>
-          </div>
-          
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.8 }}
-            className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
-          >
-            AWS Certified Developer specializing in full-stack development with React.js, Python, and cloud technologies. 
-            Contributing to open-source projects and building scalable enterprise solutions.
-          </motion.p>
-        </motion.div>
+            {/* Animated Role */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7, duration: 0.8 }}
+              className="mb-6"
+            >
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 dark:text-white mb-4">
+                I'm a{' '}
+                <span className="text-blue-500 dark:text-blue-400 inline-block min-w-0">
+                  {text}
+                  <motion.span
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ duration: 0.8, repeat: Infinity }}
+                    className="text-blue-500 dark:text-blue-400"
+                  >
+                    |
+                  </motion.span>
+                </span>
+              </div>
+            </motion.div>
 
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16"
-        >
-          <motion.button
-            onClick={() => scrollToNext()}
-            className="group px-8 py-4 bg-gradient-to-r from-primary-500 to-purple-600 text-white rounded-full font-medium text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <span className="flex items-center space-x-2">
-              <span>View My Work</span>
-              <motion.div
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.9, duration: 0.8 }}
+              className="text-lg text-gray-600 dark:text-gray-300 mb-8 leading-relaxed max-w-2xl"
+            >
+              AWS Certified Developer specializing in full-stack development with React.js, Python, and cloud technologies. 
+              Contributing to open-source projects and building scalable enterprise solutions.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.1, duration: 0.8 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <motion.button
+                onClick={() => scrollToProjects()}
+                className="px-8 py-4 bg-blue-600 text-white rounded-lg font-medium text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <ChevronDownIcon className="w-5 h-5" />
-              </motion.div>
-            </span>
-          </motion.button>
-          
-          <motion.button
-            className="group px-8 py-4 glass border border-primary-400/30 text-gray-800 dark:text-white rounded-full font-medium text-lg hover:bg-primary-400/10 transition-all duration-300"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
+                View My Work
+              </motion.button>
+              
+              <motion.button
+                className="px-8 py-4 bg-white text-blue-600 border-2 border-blue-600 rounded-lg font-medium text-lg hover:bg-blue-50 transition-all duration-300"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
+                Contact Me
+              </motion.button>
+            </motion.div>
+          </motion.div>
+
+          {/* Right Column - Profile Photo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex justify-center lg:justify-end"
           >
-            <span className="flex items-center space-x-2">
-              <ArrowDownTrayIcon className="w-5 h-5" />
-              <span>Download CV</span>
-            </span>
-          </motion.button>
-        </motion.div>
+            <div className="relative group">
+              {/* Main photo container */}
+              <div className="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full bg-white shadow-2xl border-4 border-white overflow-hidden group-hover:shadow-3xl transition-all duration-300">
+                {/* Professional photo */}
+                <img 
+                  src="/images/abil.png" 
+                  alt="Abil P Raju - Full Stack Developer"
+                  className="w-full h-full object-cover object-center brightness-110 contrast-110 saturate-110"
+                />
+              </div>
+              
+              {/* Subtle glow effect */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-400/20 to-purple-400/20 blur-2xl scale-110 group-hover:scale-125 transition-all duration-500"></div>
+              
+              {/* Clean border highlight */}
+              <div className="absolute inset-0 rounded-full border-2 border-white/80 group-hover:border-white transition-all duration-300"></div>
+            </div>
+          </motion.div>
+        </div>
+
 
         {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2, duration: 0.8 }}
+          transition={{ delay: 1.5, duration: 0.8 }}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center text-gray-500 dark:text-gray-400"
+            className="flex flex-col items-center text-gray-400 dark:text-gray-500"
           >
-            <span className="text-sm mb-2">Scroll to explore</span>
-            <ChevronDownIcon className="w-6 h-6" />
+            <span className="text-sm mb-2">Scroll Down</span>
+            <ChevronDownIcon className="w-5 h-5" />
           </motion.div>
         </motion.div>
       </div>

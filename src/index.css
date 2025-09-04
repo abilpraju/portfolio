@@ -83,5 +83,36 @@
   .floating-label.active {
     @apply -top-2 left-2 text-xs text-primary-500 bg-white dark:bg-gray-900 px-2;
   }
+
+  /* Profile photo enhancements */
+  .profile-photo {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    box-shadow: 
+      0 20px 25px -5px rgba(0, 0, 0, 0.1),
+      0 10px 10px -5px rgba(0, 0, 0, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .profile-photo img {
+    filter: 
+      brightness(1.1) 
+      contrast(1.1) 
+      saturate(1.1) 
+      drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    transition: all 0.3s ease;
+  }
+
+  .profile-photo:hover img {
+    filter: 
+      brightness(1.15) 
+      contrast(1.15) 
+      saturate(1.15) 
+      drop-shadow(0 6px 12px rgba(0, 0, 0, 0.15));
+  }
+
+  .profile-photo-glow {
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(147, 51, 234, 0.15) 100%);
+    filter: blur(20px);
+  }
 }
 

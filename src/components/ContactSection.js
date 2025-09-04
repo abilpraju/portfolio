@@ -7,6 +7,7 @@ import {
   MapPinIcon,
   PaperAirplaneIcon,
   CheckCircleIcon,
+  ExclamationTriangleIcon,
 } from '@heroicons/react/24/outline';
 import {
   ArrowTopRightOnSquareIcon,
@@ -28,6 +29,7 @@ const ContactSection = () => {
   const [focusedField, setFocusedField] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState('');
 
   const contactInfo = [
     {
@@ -96,16 +98,42 @@ const ContactSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError('');
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
+    try {
+      // Using EmailJS to send emails
+      const emailData = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_email: 'abilraju97@gmail.com'
+      };
+
+      // For now, we'll use a simple mailto link as a fallback
+      // In production, you would integrate with EmailJS or a backend service
+      const mailtoLink = `mailto:abilraju97@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+      )}`;
+      
+      // Open mailto link
+      window.open(mailtoLink, '_blank');
+      
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => setIsSubmitted(false), 5000);
+      
+    } catch (err) {
+      console.error('Error sending message:', err);
+      setError('Failed to send message. Please try again or contact me directly.');
+      setIsSubmitting(false);
+      
+      // Reset error message after 5 seconds
+      setTimeout(() => setError(''), 5000);
+    }
   };
 
   const containerVariants = {
@@ -242,7 +270,22 @@ const ContactSection = () => {
                   className="flex items-center space-x-2 p-4 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 rounded-lg mb-6"
                 >
                   <CheckCircleIcon className="w-5 h-5" />
-                  <span>Message sent successfully! I'll get back to you soon.</span>
+                  <span>Your default email client will open with the message. Please send it to complete the contact process.</span>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* Error Message */}
+            <AnimatePresence>
+              {error && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="flex items-center space-x-2 p-4 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-lg mb-6"
+                >
+                  <ExclamationTriangleIcon className="w-5 h-5" />
+                  <span>{error}</span>
                 </motion.div>
               )}
             </AnimatePresence>
