@@ -180,19 +180,31 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-3"
             >
               <motion.button
                 onClick={() => scrollToProjects()}
-                className="px-8 py-4 bg-blue-600 text-white rounded-lg font-medium text-lg shadow-lg hover:shadow-xl transition-all duration-300"
+                className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium text-base shadow-lg hover:shadow-xl transition-all duration-300"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
               >
                 View My Work
               </motion.button>
               
+              <motion.a
+                href="https://drive.google.com/file/d/1Y422lTQttBTo1-O52t-z3GlPwXwJMvfo/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3 bg-white text-blue-600 border-2 border-blue-600 rounded-lg font-medium text-base hover:bg-blue-50 transition-all duration-300 flex items-center justify-center"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <ArrowDownTrayIcon className="w-4 h-4 mr-2" />
+                Download Resume
+              </motion.a>
+              
               <motion.button
-                className="px-8 py-4 bg-white text-blue-600 border-2 border-blue-600 rounded-lg font-medium text-lg hover:bg-blue-50 transition-all duration-300"
+                className="px-6 py-3 bg-white text-blue-600 border-2 border-blue-600 rounded-lg font-medium text-base hover:bg-blue-50 transition-all duration-300"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => {

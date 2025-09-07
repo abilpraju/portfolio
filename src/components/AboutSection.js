@@ -107,7 +107,7 @@ const AboutSection = () => {
                 </h3>
               </div>
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-                I'm a passionate Full-Stack Developer with over 3 years of experience at Aot-technologies, 
+                I'm a passionate Full-Stack Developer with over 4 years of experience at Aot-technologies, 
                 specializing in enterprise-level applications and open-source contributions. Currently working 
                 on formsflow.ai, an innovative platform for creating forms and workflows that serves thousands of users.
               </p>
@@ -135,8 +135,11 @@ const AboutSection = () => {
             </motion.div>
 
             {/* Download CV Button */}
-            <motion.div variants={itemVariants}>
-              <motion.button
+            {/* <motion.div variants={itemVariants}>
+              <motion.a
+                href="https://drive.google.com/file/d/1Y422lTQttBTo1-O52t-z3GlPwXwJMvfo/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary-500 to-purple-600 text-white rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-300"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
@@ -145,8 +148,8 @@ const AboutSection = () => {
                 <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                 </svg>
-              </motion.button>
-            </motion.div>
+              </motion.a>
+            </motion.div> */}
           </motion.div>
 
           {/* Stats Grid */}

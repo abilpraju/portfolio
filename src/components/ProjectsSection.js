@@ -22,6 +22,32 @@ const ProjectsSection = () => {
   const projects = [
     {
       id: 1,
+      title: 'Real-Time Chatbot Application',
+      category: 'fullstack',
+      description: 'AI-powered real-time chatbot using MERN stack and ChatGPT integration',
+      longDescription: 'Developed an AI-powered real-time chatbot using MERN stack and integrated ChatGPT for natural language processing. Implemented WebSocket for instant communication and deployed on AWS with Docker and Nginx. Features dynamic AI responses, real-time chat flow, comprehensive error handling, and modern responsive UI. Built with React, TypeScript, and Tailwind CSS for optimal user experience.',
+      image: 'https://picsum.photos/800/400?random=1',
+      tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.io', 'OpenAI API', 'AWS', 'Docker', 'Nginx'],
+      liveUrl: 'https://github.com/abilpraju/Real-Time-Chat',
+      githubUrl: 'https://github.com/abilpraju/Real-Time-Chat',
+      date: '2024',
+      featured: true,
+    },
+    {
+      id: 2,
+      title: 'Social Media Platform',
+      category: 'fullstack',
+      description: 'Scalable social media platform with AI features, posts, likes, comments, and real-time notifications',
+      longDescription: 'Built a comprehensive social media platform with features like posts, likes, comments, and real-time notifications. Integrated authentication, media uploads with Cloudinary, and deployed using AWS services. Features AI-powered content moderation, personalized feeds, sentiment analysis, and chatbot integration. Implemented JWT authentication, rate limiting, and comprehensive security measures for enterprise-grade scalability.',
+      image: 'https://picsum.photos/800/400?random=2',
+      tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Cloudinary', 'JWT', 'OpenAI API', 'AWS', 'Socket.io'],
+      liveUrl: 'https://github.com/abilpraju/socialmedia',
+      githubUrl: 'https://github.com/abilpraju/socialmedia',
+      date: '2024',
+      featured: true,
+    },
+    {
+      id: 3,
       title: 'Formsflow.ai Platform',
       category: 'fullstack',
       description: 'Open-source platform for creating forms and workflows with multi-tenancy support',
@@ -34,7 +60,7 @@ const ProjectsSection = () => {
       featured: true,
     },
     {
-      id: 2,
+      id: 4,
       title: 'Houseboat Booking Platform',
       category: 'fullstack',
       description: 'Feature-rich houseboat booking platform with admin and user management',
@@ -47,7 +73,7 @@ const ProjectsSection = () => {
       featured: true,
     },
     {
-      id: 3,
+      id: 5,
       title: 'Custom Form.io Components Package',
       category: 'frontend',
       description: 'NPM package with customized Form.io components and themes',
@@ -60,7 +86,7 @@ const ProjectsSection = () => {
       featured: false,
     },
     {
-      id: 4,
+      id: 6,
       title: 'Camunda-Workato Integration Connector',
       category: 'backend',
       description: 'Custom connector for seamless workflow automation between platforms',
@@ -85,6 +111,7 @@ const ProjectsSection = () => {
   const filteredProjects = filter === 'all' 
     ? projects 
     : projects.filter(project => project.category === filter);
+
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -155,15 +182,17 @@ const ProjectsSection = () => {
           ))}
         </motion.div>
 
+
         {/* Projects Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate="visible"
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          style={{ minHeight: '400px' }}
         >
           <AnimatePresence>
-            {filteredProjects.map((project) => (
+            {filteredProjects.length > 0 ? filteredProjects.map((project) => (
               <motion.div
                 key={project.id}
                 variants={itemVariants}
@@ -230,7 +259,13 @@ const ProjectsSection = () => {
                   </div>
                 </div>
               </motion.div>
-            ))}
+            )) : (
+              <div className="col-span-full text-center py-12">
+                <p className="text-gray-500 dark:text-gray-400 text-lg">
+                  No projects found for the selected category.
+                </p>
+              </div>
+            )}
           </AnimatePresence>
         </motion.div>
       </div>
